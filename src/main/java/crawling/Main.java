@@ -16,15 +16,14 @@ public class Main {
 		DBConnector db = new DBConnector();
 		
 		List<Status> list;
-		
-		System.out.println(db.insert(status));
-		
 		list = db.getAll();
 		
 		System.out.println(list.get(0).getDate());
-
+		
+		
+		if(!status.getDate().equals(list.get(0).getDate()))
+			System.out.println(db.insert(status));
+		
 	}
-
-
 
 }
