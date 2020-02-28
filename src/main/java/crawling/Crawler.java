@@ -38,11 +38,12 @@ public class Crawler {
 		  
 		    //Iterator을 사용하여 하나씩 값 가져오기
 		    //덩어리안에서 필요한부분만 선택하여 가져올 수 있다.
-		    Iterator<Element> ie1 = element.select("ul.s_listin_dot").iterator();
+		    Iterator<Element> ie1 = element.select("table.num tbody").iterator();
 		    Iterator<Element> ie2 = element.select("p.s_descript").iterator();
 		   
-		    if(ie1.hasNext())
-		    	nowStatus = ie1.next().select("li").iterator();
+		    if(ie1.hasNext()) {
+		    	nowStatus = ie1.next().select("td").iterator();
+		    }
 		    if(ie2.hasNext()) {
 		    	str= ie2.next().text();
 	    	
@@ -52,9 +53,9 @@ public class Crawler {
 		    	
 		    	List<String> list = new ArrayList<String>();
 		    	while(nowStatus.hasNext()) {
-		    		strs=nowStatus.next().text().split("\\) ");
-		    		strs = strs[1].split("명");
+		    		strs=nowStatus.next().text().split("명");
 		    		strs[0] = strs[0].replace(",", "");
+		    		strs[0] = strs[0].replace(" ", "");
 		    		list.add(strs[0]);
 		    	}
 		    	
