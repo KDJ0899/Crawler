@@ -25,7 +25,7 @@ public class DBConnector {
 			// ... 위의 소스코드//
 
 			String sql; // SQL문을 저장할 String
-			sql = "select * from status order by date desc";
+			sql = "select * from status order by quarantinedPatient desc,date desc;";
 			ResultSet rs = state.executeQuery(sql); // SQL문을 전달하여 실행
 			List<Status> result = new ArrayList<Status>();
 			Status obj;

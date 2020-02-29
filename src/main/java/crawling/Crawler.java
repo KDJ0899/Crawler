@@ -15,7 +15,7 @@ import dto.Status;
 public class Crawler {
 	
 	public static Status clawling() {
-		String url = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=&brdGubun=&ncvContSeq=&contSeq=&board_id=&gubun=";    //크롤링할 url지정
+		String url = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun=";    //크롤링할 url지정
         Document doc = null;        //Document에는 페이지의 전체 소스가 저장된다
         Status status = null;
         
