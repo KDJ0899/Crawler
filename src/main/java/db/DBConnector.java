@@ -8,10 +8,10 @@ import dto.Status;
 public class DBConnector {
 	
 	private final String JDBC_DRIVER = "org.mariadb.jdbc.Driver"; // 드라이버
-	private final String DB_URL = "jdbc:mariadb://localhost:3307/corona"; // 접속할 DB 서버
+	private final String DB_URL = "jdbc:mariadb://coronadb.cb4dzuocsccg.ap-northeast-2.rds.amazonaws.com:3306/corona"; // 접속할 DB 서버
 
-	private final String USER_NAME = "root"; // DB에 접속할 사용자 이름을 상수로 정의
-	private final String PASSWORD = "rla016";
+	private final String USER_NAME = "kxv1379"; // DB에 접속할 사용자 이름을 상수로 정의
+	private final String PASSWORD = "rla016754";
 	
 	public DBConnector() {}
 	
@@ -25,7 +25,7 @@ public class DBConnector {
 			// ... 위의 소스코드//
 
 			String sql; // SQL문을 저장할 String
-			sql = "select * from status order by quarantinedPatient desc,date desc;";
+			sql = "select * from status order by date desc;";
 			ResultSet rs = state.executeQuery(sql); // SQL문을 전달하여 실행
 			List<Status> result = new ArrayList<Status>();
 			Status obj;

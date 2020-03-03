@@ -1,7 +1,10 @@
 package crawling;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,7 +52,14 @@ public class Crawler {
 	    	
 		    	String[] strs = str.split("\\(");
 		    	strs = strs[1].split(" 기준");
-		    	String time = strs[0];
+		    	strs = strs[0].split("일 ");
+		    	String day = strs[0];
+		    	String time = strs[1];
+		    	strs = day.split("[.]");
+		    	String month = strs[0];
+		    	day = strs[0];
+		    	strs = time.split("시");
+		    	time = strs[0];
 		    	
 		    	List<String> list = new ArrayList<String>();
 		    	while(nowStatus.hasNext()) {
@@ -69,7 +79,7 @@ public class Crawler {
 		    			.treatedPatient(treatedPatient)
 		    			.deceasedPerson(deceasedPerson)
 		    			.inspecting(inspecting)
-						.date(time)
+						.date("2020-"+month+"-"+day+" "+time+":00")
 					.build();
 		    }
     	}
