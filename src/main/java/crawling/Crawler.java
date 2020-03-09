@@ -57,7 +57,7 @@ public class Crawler {
 		    	String time = strs[1];
 		    	strs = day.split("[.]");
 		    	String month = strs[0];
-		    	day = strs[0];
+		    	day = strs[1];
 		    	strs = time.split("시");
 		    	time = strs[0];
 		    	
@@ -73,7 +73,6 @@ public class Crawler {
 		    	int treatedPatient = Integer.parseInt(list.get(1));
 		    	int deceasedPerson = Integer.parseInt(list.get(2));
 		    	int inspecting = Integer.parseInt(list.get(3));
-		    	
 		    	status = Status.builder()
 		    			.quarantinedPatient(quarantinedPatient)
 		    			.treatedPatient(treatedPatient)
