@@ -26,7 +26,13 @@ public class Main {
 		    System.out.println(date);
 		} catch (Exception e) {System.out.println(e);}
 		
-		Beta.clawling(date);
+		Status status = Beta.clawling(date);
+		
+		if(status!=null) {
+			status.setDate(date1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		}
+		
+		db.insert(status);
 	}
 
 }

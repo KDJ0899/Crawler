@@ -46,10 +46,11 @@ public class Crawler {
 		   
 		    if(ie1.hasNext()) {
 		    	nowStatus = ie1.next().select("td").iterator();
+		    	System.out.println(nowStatus.toString());
 		    }
 		    if(ie2.hasNext()) {
 		    	str= ie2.next().text();
-	    	
+		    	System.out.println(str);
 		    	String[] strs = str.split("\\(");
 		    	strs = strs[1].split(" 기준");
 		    	strs = strs[0].split("일 ");
