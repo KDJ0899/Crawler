@@ -1,9 +1,7 @@
 package crawling;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import db.DBConnector;
@@ -13,30 +11,22 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-
-		Status status = Crawler.clawling();
-
 		DBConnector db = new DBConnector();
 		
 		List<Status> list;
 		list = db.getAll();
 		String date = list.get(0).getDate();
-		
-		Date date1 = null;
-		Date date2 = null;
+		LocalDateTime date1 = null;
 		try {
-		    DateFormat formatter ; 
-		 
-		    formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-		    date1 = (Date)formatter.parse(status.getDate());
-		    date2 = (Date)formatter.parse(date);
+		    date1=LocalDateTime.parse(date,
+		    	    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")); 
+		    date1 =date1.plusDays(1);
+		    date= date1.getMonthValue()+"월 "+(date1.getDayOfMonth())+"일";
 		    
-		    System.out.println("crawling: "+(date1.getMonth()+1)+"/"+(date1.getDay()+1)+" "+date1.getHours()+":0");
-			System.out.println("saved: "+(date2.getMonth()+1)+"/"+(date2.getDay()+1)+" "+date2.getHours()+":0");
-		} catch (Exception e) {}
-		if(date1.getTime()!=date2.getTime())
-			System.out.println(db.insert(status));
+		    System.out.println(date);
+		} catch (Exception e) {System.out.println(e);}
 		
+		Beta.clawling(date);
 	}
 
 }
